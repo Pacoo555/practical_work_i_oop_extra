@@ -1,1 +1,6 @@
-﻿Console.WriteLine("Write your code here for practical work 1!!!");
+﻿using System;
+
+namespace practicalWorkI
+{
+    
+}
