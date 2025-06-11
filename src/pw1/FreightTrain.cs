@@ -4,13 +4,25 @@ namespace practicalWorkI
 {
     public class FreightTrain : Train
     {
-        public int MaxWeight { get; set; }
-        public string FreightType { get; set; }
+        private int maxWeight;
+        private string freightType;
+
+        public int MaxWeight
+        {
+            get { return maxWeight; }
+            set { maxWeight = value; }
+        }
+
+        public string FreightType
+        {
+            get { return freightType; }
+            set { freightType = value; }
+        }
 
         public FreightTrain(string id, int arrivalTime, int maxWeight, string freightType) : base(id, arrivalTime, "freight")
         {
-            MaxWeight = maxWeight;
-            FreightType = freightType;
+            this.maxWeight = maxWeight;
+            this.freightType = freightType;
         }
     }
 }

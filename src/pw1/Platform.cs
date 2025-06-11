@@ -9,18 +9,41 @@ namespace practicalWorkI
     }
     public class Platform
     {
-        public string PlatformID { get; set; }
-        public PlatformStatus Status { get; set; }
-        public Train CurrentTrain { get; set; }
-        public int DockingTime { get; set; } = 2;
+        private string id;
+        protected PlatformStatus status;
+        private Train currentTrain;
+        private int dockingTime = 2;
+
+        public string ID
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+
+        public PlatformStatus Status
+        {
+            get { return this.status; }
+            set { this.status = value; }
+        }
+
+        public Train CurrentTrain
+        {
+            get { return this.currentTrain; }
+            set { this.currentTrain = value; }
+        }
+
+        public int DockingTime
+        {
+            get { return this.dockingTime; }
+            set { this.dockingTime = value; }
+        }
 
         public Platform(string id, int dockingTime)
         {
-            PlatformID = id;
-            dockingTime = DockingTime;
-            Status = PlatformStatus.Free;
-            CurrentTrain = null;
+            this.id = id;
+            this.dockingTime = dockingTime;
+            this.status = PlatformStatus.Free;
+            this.currentTrain = null;
         }
-
     }
 }
