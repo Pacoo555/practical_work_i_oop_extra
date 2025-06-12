@@ -2,7 +2,6 @@ using System;
 
 namespace practicalWorkI
 {
-
     public enum TrainStatus
     {
     EnRoute,
