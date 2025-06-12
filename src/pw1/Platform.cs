@@ -12,7 +12,7 @@ namespace practicalWorkI
         private string id;
         protected PlatformStatus status;
         private Train currentTrain;
-        private int dockingTime = 2;
+        private int dockingTime;
 
         public string ID
         {
@@ -38,10 +38,10 @@ namespace practicalWorkI
             set { this.dockingTime = value; }
         }
 
-        public Platform(string id, int dockingTime)
+        public Platform(string id)
         {
             this.id = id;
-            this.dockingTime = dockingTime;
+            this.dockingTime = 2;
             this.status = PlatformStatus.Free;
             this.currentTrain = null;
         }
