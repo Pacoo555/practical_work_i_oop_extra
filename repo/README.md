@@ -38,4 +38,20 @@ The DisplayStatus method shows the information of every train, its ID, status an
 
 The LoadTrainsFromFile method first asks for the name of the csv file, then, using streamreader, adds every train to the list, and differenciates if its a passenger or a freight train.
 
-The AdvanceTick method
+The AdvanceTick method reduces the arrival time of each train by 15 minutes. Then, if a train is waiting to be docked, it will search for a free platform. When a train is successfully docked after 2 ticks, it will free the platform and change the train status to docked.
+
+The StartSimulation method starts AdvanceTick and DisplayStatus. This method ends when it detects that all trains are docked.
+
+#### Program
+
+The program class first asks the user for the number of platforms to create. Then, it prints a menu using the PrintMenu method. The user can choose between loading trains from a CSV file, Starting the simulation or exiting the program.
+
+### Problems
+During this project, I encountered multiple problems to which it was difficult to find a solution.
+
+First, I had a problem where the DisplayStatus method would work correctly, but it did not clean the console, the program erased part of it, but there was overlapping text that was duplicated. I tried using ConsoleClear on other parts of the program, like on the AdvanceTick method or even on the Program class. However, I could not find a solution, sometimes it worked correctly whereas other times it would duplicate the text.
+
+Another problem I had was making the AdvanceTick method work properly, as I had to try many times to make it work. For example, it took me a long time to realise I could use a boolean variable (platformAssigned) to make it easier.
+
+### Conclusion
+Through the development of this project, I reinforced my understanding of object-oriented programming concepts like inheritance and encapsulation in a practical context. I learned the importance of organizing code clearly and testing thoroughly, especially when dealing with time-based operations and visual output. While some issues, like the console not clearing properly, remained partially unresolved, the overall solution proved effective for simulating a basic train station. These insights will be useful for improving future projects in terms of structure and debugging strategies.

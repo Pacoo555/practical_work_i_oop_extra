@@ -4,9 +4,11 @@ namespace practicalWorkI
 {
     public class FreightTrain : Train
     {
+        //Attributes
         private int maxWeight;
         private string freightType;
 
+        //Properties
         public int MaxWeight
         {
             get { return maxWeight; }
@@ -19,6 +21,7 @@ namespace practicalWorkI
             set { freightType = value; }
         }
 
+        //Constructor
         public FreightTrain(string id, int arrivalTime, int maxWeight, string freightType) : base(id, arrivalTime, "freight")
         {
             this.maxWeight = maxWeight;

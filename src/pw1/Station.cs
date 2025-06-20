@@ -4,6 +4,7 @@ namespace practicalWorkI
 {
     public class Station
     {
+        // Attributes
         private List<Platform> platforms;
         private List<Train> trains;
         private string name;
@@ -40,12 +41,16 @@ namespace practicalWorkI
             }            
         }
 
+        // Methods
+
+        // Displays the status of all trains and platforms
         public void DisplayStatus()
         {
             Console.WriteLine("----- TRAIN STATUS -----");
 
             foreach (var train in trains)
             {
+                // Display the train ID, status, and arrival time
                 Console.WriteLine($"Train {train.ID} - Status: {train.Status}, Arrival: {train.ArrivalTime} min");
             }
             Console.WriteLine("");
@@ -54,12 +59,13 @@ namespace practicalWorkI
 
             foreach (var platform in platforms)
             {
-                if (platform.Status == PlatformStatus.Free)
+                if (platform.Status == PlatformStatus.Free)     // Check if the platform is free
                 {
                     Console.WriteLine($"Platform {platform.ID}: Free");
                 }
                 else
                 {
+                    // If the platform is occupied, display the train ID and remaining docking time 
                     Console.WriteLine($"Platform {platform.ID}: Occupied by {platform.CurrentTrain.ID}, {platform.DockingTime + 1} ticks remaining");
                 }
             }
@@ -68,12 +74,12 @@ namespace practicalWorkI
 
         public void LoadTrainsFromFile()
         {
-            string filePath = "../../../../../files/";
+            string filePath = "../../../../../files/";      // Path to the CSV file
 
-            string filename = "";
+            string filename = "";       // Variable to store the filename, initialized as an empty string
 
             Console.WriteLine("Enter the name of the CSV file");
-            filename = Console.ReadLine();
+            filename = Console.ReadLine();      // Read the filename from user input
 
             try
             {
@@ -87,29 +93,34 @@ namespace practicalWorkI
                     {
                         if (isFirstLine)
                         {
-                            isFirstLine = false;
+                            isFirstLine = false;        // Avoids the first line of the file, which contains the header
                             continue;
                         }
 
-                        string[] values = line.Split(separator);
+                        string[] values = line.Split(separator);    // Splits the line into values using "," as the separator
 
+                        // Initialize variables from the split values
                         string id = values[0];
                         int arrivalTime = int.Parse(values[1]);
                         string type = values[2];
 
                         if (type == "Passenger")
                         {
+                            // Initialize additional variables for passenger trains
                             int numberOfCarriages = int.Parse(values[3]);
                             int capacity = int.Parse(values[4]);
 
+                            // Create a new PassengerTrain object and add it to the trains list
                             PassengerTrain passengerTrain = new PassengerTrain(id, arrivalTime, type, numberOfCarriages, capacity);
                             trains.Add(passengerTrain);
                         }
                         else if (type == "Freight")
                         {
+                            // Initialize additional variables for freight trains
                             int maxWeight = int.Parse(values[3]);
                             string freightType = values[4];
 
+                            // Create a new FreightTrain object and add it to the trains list
                             FreightTrain freightTrain = new FreightTrain(id, arrivalTime, maxWeight, freightType);
                             trains.Add(freightTrain);
                         }
@@ -118,6 +129,7 @@ namespace practicalWorkI
 
                 Console.WriteLine($"Train data loaded successfully. " + trains.Count + " trains loaded.");
             }
+            // Handle multiple exceptions that may occur
             catch (FileNotFoundException e)
             {
                 Console.WriteLine($"File does not exist. " + e.Message);

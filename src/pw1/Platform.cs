@@ -4,16 +4,19 @@ namespace practicalWorkI
 {
     public enum PlatformStatus
     {
+        // Enum to represent the status of the platform
         Free,
         Occupied
     }
     public class Platform
     {
+        // Attributes
         private string id;
         protected PlatformStatus status;
         private Train currentTrain;
         private int dockingTime;
 
+        // Properties
         public string ID
         {
             get { return this.id; }
@@ -38,6 +41,7 @@ namespace practicalWorkI
             set { this.dockingTime = value; }
         }
 
+        // Constructor
         public Platform(string id)
         {
             this.id = id;
