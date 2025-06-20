@@ -8,19 +8,15 @@ namespace practicalWorkI
         public static void PrintMenu()
         {
 
-            Console.WriteLine("┌─────────────────────────────────────────────┐");
-            Console.WriteLine("│┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼│");
-            Console.WriteLine("│┼───────────────────────────────────────────┼┤");
-            Console.WriteLine("││   Welcome to the UFV Train Station        ││");
+            Console.WriteLine("===============================================");
+            Console.WriteLine("||   Welcome to the UFV Train Station        ││");
             Console.WriteLine("││                                           ││");
             Console.WriteLine("││   Choose an option:                       ││");
             Console.WriteLine("││   1. Load Trains from file.               ││");
             Console.WriteLine("││   2. Start simulation.                    ││");
             Console.WriteLine("││   3. Exit.                                ││");
             Console.WriteLine("││                                           ││");
-            Console.WriteLine("│┼────────────────────────────────────────────┤");
-            Console.WriteLine("│┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼│");
-            Console.WriteLine("└─────────────────────────────────────────────┘");
+            Console.WriteLine("===============================================");
             Console.WriteLine();
             Console.WriteLine();
 

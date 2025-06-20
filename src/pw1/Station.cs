@@ -116,15 +116,19 @@ namespace practicalWorkI
                     }
                 }
 
-                Console.WriteLine($"Train data loaded successfully." + trains.Count + " trains loaded.");
+                Console.WriteLine($"Train data loaded successfully. " + trains.Count + " trains loaded.");
             }
-            catch (FileNotFoundException f)
+            catch (FileNotFoundException e)
             {
-                Console.WriteLine($"{f}; File does not exist.");
+                Console.WriteLine($"File does not exist. " + e.Message);
             }
-            catch (DirectoryNotFoundException d)
+            catch (IndexOutOfRangeException ex)
             {
-                Console.WriteLine($"{d}; Directory does not exist.");
+                Console.WriteLine($"Formatting error " + ex.Message);
+            }
+            catch (FormatException f)
+            {
+                Console.WriteLine($"Format error " + f.Message);
             }
         }
 
@@ -200,11 +204,13 @@ namespace practicalWorkI
                     }
                 }
                 AdvanceTick();
+
+                Console.Clear();
                 DisplayStatus();
 
-                Console.WriteLine("Press any key to advance the simulation");
+                Console.WriteLine("Press enter to advance the simulation");
                 Console.ReadLine();
-                Console.Clear();
+                
             }
             Console.WriteLine("Simulation ended. All trains are docked.");
         }
