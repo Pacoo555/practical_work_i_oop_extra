@@ -3,10 +3,10 @@
 ## Design Detailed Document
 
 ### Table of Contents
-- [Introduction](#1-introduction)
-- [Description](#2-description)
-- [Problems](#3-problems)
-- [Conclusions](#4-conclusion)
+- [Introduction](#Introduction)
+- [Description](#Description)
+- [Problems](#Problems)
+- [Conclusions](#Conclusion)
 
 ### Introduction
 
