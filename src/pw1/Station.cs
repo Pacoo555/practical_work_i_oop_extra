@@ -148,20 +148,21 @@ namespace practicalWorkI
         {
             foreach (var train in trains)
             {
-                if (train.Status == TrainStatus.EnRoute || train.Status == TrainStatus.Waiting)
+                if (train.Status == TrainStatus.EnRoute || train.Status == TrainStatus.Waiting)         // If the train isn't docked or docking
                 {
                     train.ArrivalTime -= 15;
 
-                    if (train.ArrivalTime <= 0)
+                    if (train.ArrivalTime <= 0)     // If the train has arrived at the station
                     {
                         train.ArrivalTime = 0;
 
-                        bool platformAssigned = false;
+                        bool platformAssigned = false;      // Variable to check if a platform has been assigned
 
                         foreach (var platform in platforms)
                         {
                             if (platform.Status == PlatformStatus.Free)
                             {
+                                // Assign the train to the free platform
                                 platform.Status = PlatformStatus.Occupied;
                                 platform.CurrentTrain = train;
                                 platform.DockingTime = 2;
@@ -173,6 +174,7 @@ namespace practicalWorkI
 
                         if (!platformAssigned)
                         {
+                            // If no platform is free, set the train status to Waiting
                             train.Status = TrainStatus.Waiting;
                         }
                     }
@@ -181,12 +183,15 @@ namespace practicalWorkI
 
             foreach (var platform in platforms)
             {
+                // If the platform is occupied and has a train docking
                 if (platform.Status == PlatformStatus.Occupied && platform.CurrentTrain != null)
                 {
+                    // If the train is docking, decrease the docking time
                     if (platform.CurrentTrain.Status == TrainStatus.Docking)
                     {
                         if (platform.DockingTime <= 0)
                         {
+                            // If the docking time is over, set the train status to Docked
                             platform.CurrentTrain.Status = TrainStatus.Docked;
                             platform.CurrentTrain = null;
                             platform.Status = PlatformStatus.Free;
@@ -201,12 +206,13 @@ namespace practicalWorkI
         {
             bool allDocked = false;
 
-            while (!allDocked)
+            while (!allDocked)      // Check if all trains are docked in order to end the simulation or continue it
             {
                 foreach (Train train in trains)
                 {
                     if (train.Status != TrainStatus.Docked)
                     {
+                        // If any train is not docked, set allDocked to false and continue the simulation
                         allDocked = false;
                         break;
                     }
@@ -215,8 +221,9 @@ namespace practicalWorkI
                         allDocked = true;
                     }
                 }
-                AdvanceTick();
 
+                // Execute the simulation methods
+                AdvanceTick();
                 Console.Clear();
                 DisplayStatus();
 
